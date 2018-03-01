@@ -1,4 +1,4 @@
-package com.example.amisha.laberintov.Helper;
+package in.goflo.laberintov.Helper;
 
 import android.app.Activity;
 import android.location.Location;
@@ -27,7 +27,7 @@ import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 
 
 /**
- * Created by amisha on 5/2/18.
+ * Created by goflo on 5/2/18.
  */
 
 public class LocationManager implements GoogleApiClient.ConnectionCallbacks,GoogleApiClient.OnConnectionFailedListener, LocationListener {

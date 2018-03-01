@@ -1,4 +1,4 @@
-package com.example.amisha.laberintov.View.Activity;
+package in.goflo.laberintov.View.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,7 +11,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
 
-import com.example.amisha.laberintov.R;
+import in.goflo.laberintov.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;

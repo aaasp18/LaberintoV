@@ -1,7 +1,7 @@
-package com.example.amisha.laberintov.Model;
+package in.goflo.laberintov.Model;
 
 /**
- * Created by amisha on 20/2/18.
+ * Created by goflo on 20/2/18.
  */
 
 public class LocationDetails {

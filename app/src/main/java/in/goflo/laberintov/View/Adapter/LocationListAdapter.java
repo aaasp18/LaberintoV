@@ -1,4 +1,4 @@
-package com.example.amisha.laberintov.View.Adapter;
+package in.goflo.laberintov.View.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,21 +8,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.amisha.laberintov.Model.RoomDetails;
-import com.example.amisha.laberintov.R;
+import in.goflo.laberintov.Model.LocationDetails;
+import in.goflo.laberintov.R;
 
 import java.util.ArrayList;
 
 /**
- * Created by amisha on 27/2/18.
+ * Created by Anisha Mascarenhas on 28-01-2018.
  */
 
-public class RoomListAdapter extends RecyclerView.Adapter<RoomListAdapter.ViewHolder> {
+public class LocationListAdapter extends RecyclerView.Adapter<LocationListAdapter.ViewHolder> {
 
-    private ArrayList<RoomDetails> list;
+    private ArrayList<LocationDetails> list;
     private Context context;
 
-    public RoomListAdapter(Context context, ArrayList<RoomDetails> list) {
+    public LocationListAdapter(Context context, ArrayList<LocationDetails> list) {
         this.context = context;
         this.list = list;
     }
@@ -36,9 +36,8 @@ public class RoomListAdapter extends RecyclerView.Adapter<RoomListAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        String roomName =  list.get(position).getRoomName();
-        holder.name.setText(roomName);
-
+        String locationName =  list.get(position).getLocationName();
+        holder.name.setText(locationName);
     }
 
     @Override
@@ -60,9 +59,9 @@ public class RoomListAdapter extends RecyclerView.Adapter<RoomListAdapter.ViewHo
         public void onClick(View view) {
             // Get the position of the item that was clicked.
             int position = getLayoutPosition();
-            Intent intent = new Intent(context, TrainingActivity.class);
-            intent.putExtra(context.getString(R.string.roomName), list.get(position).getRoomName());
-            intent.putExtra(context.getString(R.string.roomID), list.get(position).getRoomID());
+            Intent intent = new Intent(context, SelectBuildingActivity.class);
+            intent.putExtra(context.getString(R.string.locationID), list.get(position).getLocationID());
+            intent.putExtra(context.getString(R.string.locationName), list.get(position).getLocationName());
             context.startActivity(intent);
         }
     }

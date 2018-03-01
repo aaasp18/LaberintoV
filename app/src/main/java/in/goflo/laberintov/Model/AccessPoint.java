@@ -1,4 +1,4 @@
-package com.example.amisha.laberintov.Model;
+package in.goflo.laberintov.Model;
 
 /**
  * Created by Anisha Mascarenhas on 27-02-2018.

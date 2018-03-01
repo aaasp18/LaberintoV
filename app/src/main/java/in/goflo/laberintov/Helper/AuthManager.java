@@ -1,4 +1,4 @@
-package com.example.amisha.laberintov.Helper;
+package in.goflo.laberintov.Helper;
 
 import android.content.Context;
 import android.content.SharedPreferences;

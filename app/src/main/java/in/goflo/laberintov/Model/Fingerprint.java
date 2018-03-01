@@ -1,4 +1,4 @@
-package com.example.amisha.laberintov.Model;
+package in.goflo.laberintov.Model;
 
 import java.util.ArrayList;
 
