@@ -12,6 +12,7 @@ import in.goflo.laberintov.Model.LocationDetails;
 import in.goflo.laberintov.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Anisha Mascarenhas on 28-01-2018.
@@ -19,10 +20,10 @@ import java.util.ArrayList;
 
 public class LocationListAdapter extends RecyclerView.Adapter<LocationListAdapter.ViewHolder> {
 
-    private ArrayList<LocationDetails> list;
+    private List<LocationDetails> list;
     private Context context;
 
-    public LocationListAdapter(Context context, ArrayList<LocationDetails> list) {
+    public LocationListAdapter(Context context, List<LocationDetails> list) {
         this.context = context;
         this.list = list;
     }
@@ -59,10 +60,10 @@ public class LocationListAdapter extends RecyclerView.Adapter<LocationListAdapte
         public void onClick(View view) {
             // Get the position of the item that was clicked.
             int position = getLayoutPosition();
-            Intent intent = new Intent(context, SelectBuildingActivity.class);
-            intent.putExtra(context.getString(R.string.locationID), list.get(position).getLocationID());
-            intent.putExtra(context.getString(R.string.locationName), list.get(position).getLocationName());
-            context.startActivity(intent);
+//            Intent intent = new Intent(context, SelectBuildingActivity.class);
+//            intent.putExtra(context.getString(R.string.locationID), list.get(position).getLocationID());
+//            intent.putExtra(context.getString(R.string.locationName), list.get(position).getLocationName());
+//            context.startActivity(intent);
         }
     }
 }

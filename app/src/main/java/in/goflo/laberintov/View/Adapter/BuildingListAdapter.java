@@ -60,10 +60,10 @@ public class BuildingListAdapter extends RecyclerView.Adapter<BuildingListAdapte
         public void onClick(View view) {
             // Get the position of the item that was clicked.
             int position = getLayoutPosition();
-            Intent intent = new Intent(context, SelectRoomActivity.class);
-            intent.putExtra(context.getString(R.string.buildingID), list.get(position).getBuildingID());
-            intent.putExtra(context.getString(R.string.buildingName), list.get(position).getBuildingName());
-            context.startActivity(intent);
+//            Intent intent = new Intent(context, SelectRoomActivity.class);
+//            intent.putExtra(context.getString(R.string.buildingID), list.get(position).getBuildingID());
+//            intent.putExtra(context.getString(R.string.buildingName), list.get(position).getBuildingName());
+//            context.startActivity(intent);
         }
     }
 }

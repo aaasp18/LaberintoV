@@ -130,8 +130,8 @@ public class LocationManager implements GoogleApiClient.ConnectionCallbacks,Goog
             latitude = mLastLocation.getLatitude();
             longitude = mLastLocation.getLongitude();
             Log.d(TAG, "latitude " + latitude + " long " + longitude);
-            TrainingActivity.latitude = latitude;
-            TrainingActivity.longitude = longitude;
+//            TrainingActivity.latitude = latitude;
+//            TrainingActivity.longitude = longitude;
 
         } else {
             Toast.makeText(activity, "(Couldn't obtain location. Make sure location services is enabled on the device)", Toast.LENGTH_SHORT).show();
