@@ -55,7 +55,7 @@ public class LocationViewModel extends ViewModel {
 
     public void setUserid(String ID) {
         userID = ID;
-        locationQuery = FirebaseFirestore.getInstance().collection("locations").whereEqualTo(USERID, "6y4JCw75hQWokw2Nqfl4lXGEl4H3");
+        locationQuery = FirebaseFirestore.getInstance().collection("locations").whereEqualTo(USERID, userID);
         liveData = new FirestoreQueryLiveData(locationQuery);
         locationLiveData = Transformations.map(liveData, new Deserializer());
     }
