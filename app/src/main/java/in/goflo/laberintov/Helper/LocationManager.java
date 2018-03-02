@@ -32,7 +32,7 @@ import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 
 public class LocationManager implements GoogleApiClient.ConnectionCallbacks,GoogleApiClient.OnConnectionFailedListener, LocationListener {
 
-    private static final String TAG = "latlng";
+    private static final String TAG = "LocationManager";
     private static final int REQUEST_MULTIPLE_PERMISSIONS = 1;
 
     Activity activity;
