@@ -12,6 +12,7 @@ import in.goflo.laberintov.Model.RoomDetails;
 import in.goflo.laberintov.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by goflo on 27/2/18.
@@ -19,10 +20,10 @@ import java.util.ArrayList;
 
 public class RoomListAdapter extends RecyclerView.Adapter<RoomListAdapter.ViewHolder> {
 
-    private ArrayList<RoomDetails> list;
+    private List<RoomDetails> list;
     private Context context;
 
-    public RoomListAdapter(Context context, ArrayList<RoomDetails> list) {
+    public RoomListAdapter(Context context, List<RoomDetails> list) {
         this.context = context;
         this.list = list;
     }

@@ -21,6 +21,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".View.Activity.SelectLocationActivity" />
+        <activity android:name=".View.Activity.SelectRoomActivity" />
         <activity android:name=".View.Activity.SelectBuildingActivity" />
     </application>
 

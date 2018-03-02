@@ -57,9 +57,6 @@ public class SelectLocationActivity extends AppCompatActivity{
                 }
             }
         });
-
-
-
     }
 
     private String getUserID() {

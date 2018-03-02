@@ -11,46 +11,46 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class AuthManager {
 
-    private static final String PREFERENCES_NAME = "auth";
-    private final static String EMAIL = "email";
-    private final static String UID = "uid";
-    private final static String DISPLAY_NAME = "name";
+    private static final String KEY_PREFERENCES = "auth";
+    private final static String KEY_EMAIL = "email";
+    private final static String KEY_UID = "uid";
+    private final static String KEY_DISPLAY_NAME = "name";
 
     // Saves credentials to shared preferences
     public static void saveData(Context context, FirebaseUser user) {
-        SharedPreferences sp = context.getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences(KEY_PREFERENCES, Context.MODE_PRIVATE);
 
         sp.edit()
-                .putString(EMAIL, user.getEmail())
-                .putString(UID, user.getUid())
-                .putString(DISPLAY_NAME, user.getDisplayName())
+                .putString(KEY_EMAIL, user.getEmail())
+                .putString(KEY_UID, user.getUid())
+                .putString(KEY_DISPLAY_NAME, user.getDisplayName())
                 .apply();
     }
 
     // Retrieves credentials from shared preferences
     public static String getEmail(Context context) {
-        SharedPreferences sp = context.getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE);
-        return sp.getString(EMAIL, null);
+        SharedPreferences sp = context.getSharedPreferences(KEY_PREFERENCES, Context.MODE_PRIVATE);
+        return sp.getString(KEY_EMAIL, null);
     }
 
     public static String getDisplayName(Context context){
-        SharedPreferences sp = context.getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE);
-        return sp.getString(DISPLAY_NAME, null);
+        SharedPreferences sp = context.getSharedPreferences(KEY_PREFERENCES, Context.MODE_PRIVATE);
+        return sp.getString(KEY_DISPLAY_NAME, null);
     }
 
     public static String getUid (Context context){
-        SharedPreferences sp = context.getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE);
-        return sp.getString(UID, null);
+        SharedPreferences sp = context.getSharedPreferences(KEY_PREFERENCES, Context.MODE_PRIVATE);
+        return sp.getString(KEY_UID, null);
     }
 
     // Deletes credentials from shared preferences
     public static void deleteData(Context context) {
-        SharedPreferences sp = context.getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences(KEY_PREFERENCES, Context.MODE_PRIVATE);
 
         sp.edit()
-                .putString(EMAIL, null)
-                .putString(UID, null)
-                .putString(DISPLAY_NAME, null)
+                .putString(KEY_EMAIL, null)
+                .putString(KEY_UID, null)
+                .putString(KEY_DISPLAY_NAME, null)
                 .apply();
     }
 }
