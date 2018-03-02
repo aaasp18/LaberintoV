@@ -29,13 +29,9 @@ public class LocationViewModel extends ViewModel {
     private static final String USERID = "userID";
     private static String userID;
 
-    private static Query LOCATION_QUERY =
-            FirebaseFirestore.getInstance().collection("locations").whereEqualTo(USERID, "6y4JCw75hQWokw2Nqfl4lXGEl4H3");
-
-    private final FirestoreQueryLiveData liveData = new FirestoreQueryLiveData(LOCATION_QUERY);
-
-    private final LiveData<List<LocationDetails>> locationLiveData =
-            Transformations.map(liveData, new Deserializer());
+    private static Query locationQuery;
+    private FirestoreQueryLiveData liveData;
+    private LiveData<List<LocationDetails>> locationLiveData;
 
     private class Deserializer implements Function<QuerySnapshot, List<LocationDetails>> {
         @Override
@@ -59,6 +55,9 @@ public class LocationViewModel extends ViewModel {
 
     public void setUserid(String ID) {
         userID = ID;
+        locationQuery = FirebaseFirestore.getInstance().collection("locations").whereEqualTo(USERID, "6y4JCw75hQWokw2Nqfl4lXGEl4H3");
+        liveData = new FirestoreQueryLiveData(locationQuery);
+        locationLiveData = Transformations.map(liveData, new Deserializer());
     }
 
 }
