@@ -11,7 +11,7 @@ import android.widget.TextView;
 import in.goflo.laberintov.Model.BuildingDetails;
 import in.goflo.laberintov.R;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Anisha Mascarenhas on 28-01-2018.
@@ -19,10 +19,10 @@ import java.util.ArrayList;
 
 public class BuildingListAdapter extends RecyclerView.Adapter<BuildingListAdapter.ViewHolder> {
 
-    private ArrayList<BuildingDetails> list;
+    private List<BuildingDetails> list;
     private Context context;
 
-    public BuildingListAdapter(Context context, ArrayList<BuildingDetails> list) {
+    public BuildingListAdapter(Context context, List<BuildingDetails> list) {
         this.context = context;
         this.list = list;
     }

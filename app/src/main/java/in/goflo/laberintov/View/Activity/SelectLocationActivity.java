@@ -16,7 +16,6 @@ import android.view.MenuItem;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import in.goflo.laberintov.Helper.AuthManager;
@@ -31,14 +30,13 @@ import in.goflo.laberintov.ViewModel.LocationViewModel;
 
 public class SelectLocationActivity extends AppCompatActivity{
 
-    static final String TAG = "SelectLocationActivity";
+    static final private String TAG = "SelectLocationActivity";
     RecyclerView recyclerView;
     LocationListAdapter adapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_select_location);
 
         recyclerView = (RecyclerView)findViewById(R.id.recycler_view);

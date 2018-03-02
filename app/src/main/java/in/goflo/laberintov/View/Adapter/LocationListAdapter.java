@@ -10,8 +10,8 @@ import android.widget.TextView;
 
 import in.goflo.laberintov.Model.LocationDetails;
 import in.goflo.laberintov.R;
+import in.goflo.laberintov.View.Activity.SelectBuildingActivity;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -60,10 +60,10 @@ public class LocationListAdapter extends RecyclerView.Adapter<LocationListAdapte
         public void onClick(View view) {
             // Get the position of the item that was clicked.
             int position = getLayoutPosition();
-//            Intent intent = new Intent(context, SelectBuildingActivity.class);
-//            intent.putExtra(context.getString(R.string.locationID), list.get(position).getLocationID());
-//            intent.putExtra(context.getString(R.string.locationName), list.get(position).getLocationName());
-//            context.startActivity(intent);
+            Intent intent = new Intent(context, SelectBuildingActivity.class);
+            intent.putExtra(context.getString(R.string.locationID), list.get(position).getLocationID());
+            intent.putExtra(context.getString(R.string.locationName), list.get(position).getLocationName());
+            context.startActivity(intent);
         }
     }
 }

@@ -1,6 +1,5 @@
 package in.goflo.laberintov.ViewModel;
 
-import android.app.DownloadManager;
 import android.arch.core.util.Function;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.Transformations;
@@ -26,7 +25,9 @@ import in.goflo.laberintov.Model.LocationDetails;
 public class LocationViewModel extends ViewModel {
 
     private static final String TAG = "LocationViewModel";
-    private static final String USERID = "userID";
+    private static final String KEY_USER_ID = "userID";
+    private static final String KEY_NAME = "name";
+    private static final String KEY_LOCATIONS = "locations";
     private static String userID;
 
     private static Query locationQuery;
@@ -39,9 +40,9 @@ public class LocationViewModel extends ViewModel {
             List<DocumentSnapshot> locations = querySnapshot.getDocuments();
             List<LocationDetails> locationList = new ArrayList<>();
             for(DocumentSnapshot location : locations){
-                LocationDetails locationDetails = new LocationDetails(location.get("name").toString(), location.getId());
+                LocationDetails locationDetails = new LocationDetails(location.get(KEY_NAME).toString(), location.getId());
                 locationList.add(locationDetails);
-                Log.d(TAG, "loc class " + locationDetails.getLocationID() + " " + locationDetails.getLocationName());
+                Log.d(TAG, "location " + locationDetails.getLocationID() + " " + locationDetails.getLocationName());
             }
             return locationList;
         }
@@ -55,7 +56,7 @@ public class LocationViewModel extends ViewModel {
 
     public void setUserid(String ID) {
         userID = ID;
-        locationQuery = FirebaseFirestore.getInstance().collection("locations").whereEqualTo(USERID, userID);
+        locationQuery = FirebaseFirestore.getInstance().collection(KEY_LOCATIONS).whereEqualTo(KEY_USER_ID, userID);
         liveData = new FirestoreQueryLiveData(locationQuery);
         locationLiveData = Transformations.map(liveData, new Deserializer());
     }
