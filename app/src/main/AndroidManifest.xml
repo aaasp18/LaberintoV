@@ -23,6 +23,7 @@
         <activity android:name=".View.Activity.SelectLocationActivity" />
         <activity android:name=".View.Activity.SelectRoomActivity" />
         <activity android:name=".View.Activity.SelectBuildingActivity" />
+        <activity android:name=".View.Activity.TrainingActivity" />
     </application>
 
 </manifest>

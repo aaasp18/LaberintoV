@@ -13,4 +13,5 @@
     <string name="buildingName">buildingName</string>
     <string name="fingerprints_collected">No of Fingerprints Collected:</string>
     <string name="start">Start</string>
+    <string name="permission_msg">Location Services Permission required for this app</string>
 </resources>
