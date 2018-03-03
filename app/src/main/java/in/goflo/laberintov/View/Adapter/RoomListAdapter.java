@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import in.goflo.laberintov.Model.RoomDetails;
 import in.goflo.laberintov.R;
+import in.goflo.laberintov.View.Activity.TrainingActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,10 +62,10 @@ public class RoomListAdapter extends RecyclerView.Adapter<RoomListAdapter.ViewHo
         public void onClick(View view) {
             // Get the position of the item that was clicked.
             int position = getLayoutPosition();
-//            Intent intent = new Intent(context, TrainingActivity.class);
-//            intent.putExtra(context.getString(R.string.roomName), list.get(position).getRoomName());
-//            intent.putExtra(context.getString(R.string.roomID), list.get(position).getRoomID());
-//            context.startActivity(intent);
+            Intent intent = new Intent(context, TrainingActivity.class);
+            intent.putExtra(context.getString(R.string.roomName), list.get(position).getRoomName());
+            intent.putExtra(context.getString(R.string.roomID), list.get(position).getRoomID());
+            context.startActivity(intent);
         }
     }
 }
