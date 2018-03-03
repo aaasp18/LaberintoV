@@ -6,11 +6,20 @@ package in.goflo.laberintov.Model;
 
 public class RoomDetails {
 
-    private String roomName, roomID;
+    private String roomName, roomID, buildingID;
 
-    public RoomDetails(String roomName, String roomID) {
+    public RoomDetails(String roomName, String roomID, String buildingID) {
         this.roomName = roomName;
         this.roomID = roomID;
+        this.buildingID = buildingID;
+    }
+
+    public String getBuildingID() {
+        return buildingID;
+    }
+
+    public void setBuildingID(String buildingID) {
+        this.buildingID = buildingID;
     }
 
     public String getRoomName() {

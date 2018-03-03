@@ -9,15 +9,15 @@ import java.util.ArrayList;
 public class Data {
 
     private ArrayList<Fingerprint> data;
-    private String roomid, dateTime;
-    private long timestamp;
+    private String roomid, dateTime, username, group;
+    private long time;
     private ArrayList<String> accessPoints;
 
     public Data(String roomid, ArrayList<Fingerprint> data, String dateTime, long timestamp, ArrayList<String> accessPoints){
         this.data = data;
         this.roomid = roomid;
         this.dateTime = dateTime;
-        this.timestamp = timestamp;
+        this.time = timestamp;
         this.accessPoints = accessPoints;
     }
 
@@ -46,11 +46,11 @@ public class Data {
     }
 
     public long getTimestamp() {
-        return timestamp;
+        return time;
     }
 
     public void setTimestamp(long timestamp) {
-        this.timestamp = timestamp;
+        this.time = timestamp;
     }
 
     public ArrayList<String> getAccessPoints() {

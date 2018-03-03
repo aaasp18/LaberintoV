@@ -24,11 +24,15 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import in.goflo.laberintov.Helper.AuthManager;
 import in.goflo.laberintov.Helper.FirestoreManager;
 import in.goflo.laberintov.Helper.LocationManager;
 import in.goflo.laberintov.Model.AccessPoint;
 import in.goflo.laberintov.Model.Data;
+import in.goflo.laberintov.Model.FinalData;
+import in.goflo.laberintov.Model.FinalFingerprint;
 import in.goflo.laberintov.Model.Fingerprint;
 import in.goflo.laberintov.R;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -47,7 +51,7 @@ public class TrainingActivity extends AppCompatActivity{
 
     private static final int REQUEST_MULTIPLE_PERMISSIONS = 1;
     private static final String PERMISSION_MSG = "Location Services Permission required for this app";
-    private static final String TAG = "train";
+    private static final String TAG = "TrainingActivity";
 
     private LocationManager locationManager;
     private Button startButton, stopButton;
@@ -60,11 +64,12 @@ public class TrainingActivity extends AppCompatActivity{
     ArrayAdapter<String> adapter;
     List<String> accessPointList;
 
-    String roomID, roomName;
+    String roomID, roomName, buildingID;
 
     ArrayList<List<ScanResult>> scanResults;
     ArrayList<AccessPoint> fingerprint;
-    ArrayList<Fingerprint> dataFingerprint;
+    ArrayList<FinalFingerprint> dataFingerprint;
+
     public static double latitude, longitude;
 
 
@@ -73,6 +78,7 @@ public class TrainingActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_training);
 
+        buildingID = getIntent().getStringExtra(getString(R.string.buildingID));
         roomID = getIntent().getStringExtra(getString(R.string.roomID));
         roomName = getIntent().getStringExtra(getString(R.string.roomName));
 
@@ -135,6 +141,7 @@ public class TrainingActivity extends AppCompatActivity{
         scanResults = new ArrayList<>();
         count = 0;
         locationManager.getLatLng(this);
+        Log.d(TAG, "Latlng: " + latitude + " " + longitude);
         try {
             wifiSubscription = ReactiveWifi.observeWifiAccessPoints(this)
                     .subscribeOn(Schedulers.io())
@@ -179,12 +186,18 @@ public class TrainingActivity extends AppCompatActivity{
             }
             count++;
             logFingerprints(fingerprint.toString(), count);
-            dataFingerprint.add(new Fingerprint(latitude, longitude, fingerprint));
+           // dataFingerprint.add(new Fingerprint(latitude, longitude, fingerprint));
+            long timestamp = System.currentTimeMillis();
+            dataFingerprint.add(new FinalFingerprint(timestamp, fingerprint));
         }
         ArrayList<String> listAPs = getAccessPoints(accessPoints);
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         Log.d(TAG, dateFormat.format(new Date()) + " " + System.currentTimeMillis() + "\n" + listAPs.toString() );
-        Data data = new Data(roomID, dataFingerprint, dateFormat.format(new Date()), System.currentTimeMillis(), listAPs);
+        String userId = AuthManager.getUid(this);
+        String email = AuthManager.getEmail(this);
+        String dateTime = dateFormat.format(new Date());
+        long timestamp = System.currentTimeMillis();
+        FinalData data = new FinalData(userId, email, roomID, buildingID, latitude, longitude, dateTime, timestamp, dataFingerprint, listAPs);
         FirestoreManager.updateFirestore(data);
         Toast.makeText(this, "Data Uploaded", Toast.LENGTH_SHORT).show();
     }

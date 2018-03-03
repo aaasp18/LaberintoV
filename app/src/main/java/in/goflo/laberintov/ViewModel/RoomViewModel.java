@@ -42,7 +42,7 @@ public class RoomViewModel extends ViewModel {
             List<DocumentSnapshot> rooms = querySnapshot.getDocuments();
             List<RoomDetails> roomList = new ArrayList<>();
             for(DocumentSnapshot room : rooms){
-                RoomDetails roomDetails = new RoomDetails(room.get(KEY_NAME).toString(), room.getId());
+                RoomDetails roomDetails = new RoomDetails(room.get(KEY_NAME).toString(), room.getId(), buildingID);
                 roomList.add(roomDetails);
                 Log.d(TAG, "Room: " + roomDetails.getRoomID() + " " + roomDetails.getRoomName());
             }
