@@ -141,6 +141,10 @@ public class TrainingActivity extends AppCompatActivity{
         scanResults = new ArrayList<>();
         count = 0;
         locationManager.getLatLng(this);
+        if (locationManager.mGoogleApiClient != null) {
+            Log.d(TAG, " location connecting");
+            locationManager.mGoogleApiClient.connect();
+        }
         Log.d(TAG, "Latlng: " + latitude + " " + longitude);
         try {
             wifiSubscription = ReactiveWifi.observeWifiAccessPoints(this)
@@ -233,7 +237,9 @@ public class TrainingActivity extends AppCompatActivity{
     @Override
     protected void onStart() {
         super.onStart();
+        Log.d(TAG, "location on start ");
         if (locationManager.mGoogleApiClient != null) {
+            Log.d(TAG, " location connecting");
             locationManager.mGoogleApiClient.connect();
         }
     }

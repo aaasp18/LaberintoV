@@ -20,10 +20,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".View.Activity.SelectLocationActivity" />
-        <activity android:name=".View.Activity.SelectRoomActivity" />
-        <activity android:name=".View.Activity.SelectBuildingActivity" />
-        <activity android:name=".View.Activity.TrainingActivity" />
+        <activity android:name=".View.Activity.SelectLocationActivity"/>
+        <activity android:name=".View.Activity.SelectBuildingActivity"/>
+        <activity android:name=".View.Activity.SelectRoomActivity"/>
+        <activity android:name=".View.Activity.TrainingActivity"/>
     </application>
 
 </manifest>
