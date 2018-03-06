@@ -2,7 +2,9 @@
     <string name="app_name">LaberintoV</string>
     <string name="stop">Stop</string>
     <string name="start_training">Add Data</string>
-    <string name="saved_samples">No. of Saved Samples :</string>
+
+    <string name="saved_samples">No. of Saved Samples : </string>
+
     <string name="login">Login</string>
     <string name="locationID">locationID</string>
     <string name="buildingID">buildingID</string>
