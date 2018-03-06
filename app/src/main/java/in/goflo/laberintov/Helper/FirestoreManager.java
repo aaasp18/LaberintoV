@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import in.goflo.laberintov.Model.Data;
+import in.goflo.laberintov.Model.FinalData;
 
 /**
  * Created by Anisha Mascarenhas on 03-03-2018.
@@ -28,7 +29,7 @@ public class FirestoreManager {
     static int count;
 
 
-    public static void updateFirestore(Data data) {
+    public static void updateFirestore(FinalData data) {
 
         //TODO: @anisham197 assign roomID and write to server
 

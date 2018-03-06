@@ -21,6 +21,8 @@ import com.google.android.gms.location.LocationServices;
 import java.util.ArrayList;
 import java.util.List;
 
+import in.goflo.laberintov.View.Activity.TrainingActivity;
+
 import static android.Manifest.permission.ACCESS_COARSE_LOCATION;
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
@@ -33,8 +35,7 @@ import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 public class LocationManager implements GoogleApiClient.ConnectionCallbacks,GoogleApiClient.OnConnectionFailedListener, LocationListener {
 
     private static final String TAG = "LocationManager";
-    private static final int REQUEST_MULTIPLE_PERMISSIONS = 1;
-
+    private static final int REQUEST_LOCATION_PERMISSION_CODE = 1;
     Activity activity;
     private Location mLastLocation;
     private double latitude, longitude;
@@ -51,7 +52,9 @@ public class LocationManager implements GoogleApiClient.ConnectionCallbacks,Goog
     private static int FASTEST_INTERVAL = 1000; // 1 sec
     private static float DISPLACEMENT = (float) 0.1; // 1 meters
 
+
     public void getLatLng (Activity activity) {
+        Log.d(TAG, "get latlng");
         this.activity = activity;
         // First we need to check availability of play services
         if (checkPlayServices()) {
@@ -130,8 +133,8 @@ public class LocationManager implements GoogleApiClient.ConnectionCallbacks,Goog
             latitude = mLastLocation.getLatitude();
             longitude = mLastLocation.getLongitude();
             Log.d(TAG, "latitude " + latitude + " long " + longitude);
-//            TrainingActivity.latitude = latitude;
-//            TrainingActivity.longitude = longitude;
+            TrainingActivity.latitude = latitude;
+            TrainingActivity.longitude = longitude;
 
         } else {
             Toast.makeText(activity, "(Couldn't obtain location. Make sure location services is enabled on the device)", Toast.LENGTH_SHORT).show();
@@ -159,6 +162,7 @@ public class LocationManager implements GoogleApiClient.ConnectionCallbacks,Goog
      * Starting the location updates
      * */
     private void startLocationUpdates() {
+        Log.d(TAG, "start");
         try {
             LocationServices.FusedLocationApi.requestLocationUpdates( mGoogleApiClient, mLocationRequest, this);
         }catch (SecurityException e){
@@ -177,27 +181,20 @@ public class LocationManager implements GoogleApiClient.ConnectionCallbacks,Goog
     }
 
     public static boolean checkAndRequestPermissions(Activity activity) {
-        List<String> permissionsNeeded = new ArrayList<>();;
 
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
             return true;
         }
 
-        int permissionFineLocation = ContextCompat.checkSelfPermission(activity, ACCESS_FINE_LOCATION);
-        int permissionCoarseLocation = ContextCompat.checkSelfPermission(activity, ACCESS_COARSE_LOCATION);
-
-        if (permissionFineLocation != PERMISSION_GRANTED) {
-            permissionsNeeded.add(ACCESS_FINE_LOCATION);
-        }
-        if (permissionCoarseLocation != PERMISSION_GRANTED) {
-            permissionsNeeded.add(ACCESS_COARSE_LOCATION);
-        }
-
-        if (!permissionsNeeded.isEmpty()) {
-            ActivityCompat.requestPermissions(activity, permissionsNeeded.toArray(new String[permissionsNeeded.size()]), REQUEST_MULTIPLE_PERMISSIONS);
+        if (ActivityCompat.checkSelfPermission(activity, ACCESS_FINE_LOCATION) != PERMISSION_GRANTED &&
+                ActivityCompat.checkSelfPermission(activity, ACCESS_COARSE_LOCATION) != PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(activity,
+                    new String[]{ACCESS_FINE_LOCATION, ACCESS_COARSE_LOCATION},
+                    REQUEST_LOCATION_PERMISSION_CODE);
             return false;
         }
-        return true;
+        else {
+            return true;
+        }
     }
-
 }
