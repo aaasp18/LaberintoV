@@ -1,13 +1,17 @@
 package in.goflo.laberintov.View.Activity;
 
+
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.net.wifi.ScanResult;
 import android.os.Bundle;
+
 import android.support.annotation.Nullable;
+
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -39,7 +43,9 @@ import in.goflo.laberintov.Model.FinalData;
 import in.goflo.laberintov.Model.FinalFingerprint;
 import in.goflo.laberintov.Model.Fingerprint;
 import in.goflo.laberintov.R;
+
 import in.goflo.laberintov.ViewModel.SavedSampleViewModel;
+
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
@@ -133,7 +139,6 @@ public class TrainingActivity extends AppCompatActivity{
                 }
             }
         });
-
     }
 
     private void startTraining() {
@@ -142,6 +147,7 @@ public class TrainingActivity extends AppCompatActivity{
             stopButton.setVisibility(View.VISIBLE);
             dataFingerprint = new ArrayList<>();
             accessPoints = new HashMap<>();
+
             readFingerprints();
         }
     }

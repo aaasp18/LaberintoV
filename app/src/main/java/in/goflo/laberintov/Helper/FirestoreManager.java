@@ -2,7 +2,6 @@ package in.goflo.laberintov.Helper;
 
 import android.support.annotation.NonNull;
 import android.util.Log;
-import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
