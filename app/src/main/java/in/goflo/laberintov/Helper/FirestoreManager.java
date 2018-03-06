@@ -2,6 +2,7 @@ package in.goflo.laberintov.Helper;
 
 import android.support.annotation.NonNull;
 import android.util.Log;
+import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -25,9 +26,7 @@ public class FirestoreManager {
 
     private static final String TAG = "firestore";
     private static final String FINGERPRINT_COLLECTION = "fingerprints";
-    private static final String KEY_ROOMID = "roomid";
-    static int count;
-
+    private static final String KEY_ROOMID = "roomId";
 
     public static void updateFirestore(FinalData data) {
 
@@ -48,24 +47,5 @@ public class FirestoreManager {
                         Log.w(TAG, "Error writing document", e);
                     }
                 });
-    }
-
-    public static int queryFirestore(String roomid) {
-        count = 0;
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        Query query = db.collection(FINGERPRINT_COLLECTION).whereEqualTo(KEY_ROOMID, roomid);
-        query.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-            @Override
-            public void onSuccess(QuerySnapshot qs) {
-                Log.d(TAG, "Query Size: " + qs.size());
-                List<DocumentSnapshot> docs = qs.getDocuments();
-                for(DocumentSnapshot doc : docs){
-                    ArrayList<Data> data = (ArrayList<Data>)doc.get("data");
-                    Log.d(TAG, "Doc ID: " + doc.getId() + "Data Size: " + data.size());
-                    count += data.size();
-                }
-                Log.d(TAG, "Count_in: " + count);
-            }});
-        return count;
     }
 }
