@@ -1,4 +1,4 @@
-package com.example.amisha.laberintov;
+package in.goflo.laberintov;
 
 import org.junit.Test;
 
