@@ -31,6 +31,7 @@ public class RoomViewModel extends ViewModel {
     private static final String KEY_ROOM = "rooms";
 
     private static String buildingID;
+    private static String locationID;
 
     private static Query roomQuery;
     private FirestoreQueryLiveData liveData;
@@ -42,7 +43,7 @@ public class RoomViewModel extends ViewModel {
             List<DocumentSnapshot> rooms = querySnapshot.getDocuments();
             List<RoomDetails> roomList = new ArrayList<>();
             for(DocumentSnapshot room : rooms){
-                RoomDetails roomDetails = new RoomDetails(room.get(KEY_NAME).toString(), room.getId(), buildingID);
+                RoomDetails roomDetails = new RoomDetails(room.get(KEY_NAME).toString(), room.getId(), buildingID, locationID);
                 roomList.add(roomDetails);
                 Log.d(TAG, "Room: " + roomDetails.getRoomID() + " " + roomDetails.getRoomName());
             }
@@ -55,9 +56,9 @@ public class RoomViewModel extends ViewModel {
         return roomLiveData;
     }
 
-
-    public void setBuildingId(String ID) {
-        buildingID = ID;
+    public void setBuildingLocationId(String IDbuilding, String IDlocation) {
+        buildingID = IDbuilding;
+        locationID = IDlocation;
         roomQuery = FirebaseFirestore.getInstance().collection(KEY_ROOM).whereEqualTo(KEY_BUILDING_ID, buildingID);
         liveData = new FirestoreQueryLiveData(roomQuery);
         roomLiveData = Transformations.map(liveData, new RoomViewModel.Deserializer());

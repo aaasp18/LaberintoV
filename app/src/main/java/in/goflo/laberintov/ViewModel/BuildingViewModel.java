@@ -40,7 +40,7 @@ public class BuildingViewModel extends ViewModel {
             List<DocumentSnapshot> buildings = querySnapshot.getDocuments();
             List<BuildingDetails> buildingList = new ArrayList<>();
             for(DocumentSnapshot building : buildings){
-                BuildingDetails buildingDetails = new BuildingDetails(building.get(KEY_NAME).toString(), building.getId());
+                BuildingDetails buildingDetails = new BuildingDetails(building.get(KEY_NAME).toString(), building.getId(), locationID);
                 buildingList.add(buildingDetails);
                 Log.d(TAG, "building " + buildingDetails.getBuildingID() + " " + buildingDetails.getBuildingName());
             }

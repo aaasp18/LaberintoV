@@ -65,7 +65,8 @@ public class RoomListAdapter extends RecyclerView.Adapter<RoomListAdapter.ViewHo
             Intent intent = new Intent(context, TrainingActivity.class);
             intent.putExtra(context.getString(R.string.roomName), list.get(position).getRoomName());
             intent.putExtra(context.getString(R.string.roomID), list.get(position).getRoomID());
-            intent.putExtra(context.getString(R.string.buildingID), list.get(position).getBuildingID() );
+            intent.putExtra(context.getString(R.string.buildingID), list.get(position).getBuildingID());
+            intent.putExtra(context.getString(R.string.locationID), list.get(position).getLocationID());
             context.startActivity(intent);
         }
     }

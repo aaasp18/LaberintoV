@@ -25,7 +25,7 @@ public class SelectRoomActivity extends AppCompatActivity {
     static final String TAG = "SelectRoomActivity";
     RecyclerView recyclerView;
     RoomListAdapter adapter;
-    String buildingID, buildingName;
+    String buildingID, buildingName, locationID;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -35,6 +35,7 @@ public class SelectRoomActivity extends AppCompatActivity {
 
         recyclerView = (RecyclerView)findViewById(R.id.recycler_view);
 
+        locationID = getIntent().getStringExtra(this.getString(R.string.locationID));
         buildingID = getIntent().getStringExtra(this.getString(R.string.buildingID));
         buildingName = getIntent().getStringExtra(this.getString(R.string.buildingName));
 
@@ -42,7 +43,7 @@ public class SelectRoomActivity extends AppCompatActivity {
 
         RoomViewModel roomViewModel = ViewModelProviders.of(this).get(RoomViewModel.class);
 
-        roomViewModel.setBuildingId(buildingID);
+        roomViewModel.setBuildingLocationId(buildingID, locationID);
 
         LiveData<List<RoomDetails>> roomLiveData = roomViewModel.getRoomLiveData();
         roomLiveData.observe(this, new Observer<List<RoomDetails>>() {

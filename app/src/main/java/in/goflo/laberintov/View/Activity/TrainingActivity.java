@@ -75,7 +75,7 @@ public class TrainingActivity extends AppCompatActivity{
     ArrayAdapter<String> adapter;
     List<String> accessPointList;
 
-    String roomID, roomName, buildingID;
+    String roomID, roomName, buildingID, locationID;
 
     ArrayList<List<ScanResult>> scanResults;
     ArrayList<AccessPoint> fingerprint;
@@ -89,6 +89,7 @@ public class TrainingActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_training);
 
+        locationID = getIntent().getStringExtra(this.getString(R.string.locationID));
         buildingID = getIntent().getStringExtra(getString(R.string.buildingID));
         roomID = getIntent().getStringExtra(getString(R.string.roomID));
         roomName = getIntent().getStringExtra(getString(R.string.roomName));
@@ -229,7 +230,8 @@ public class TrainingActivity extends AppCompatActivity{
         String email = AuthManager.getEmail(this);
         String dateTime = dateFormat.format(new Date());
         long timestamp = System.currentTimeMillis();
-        FinalData data = new FinalData(userId, email, roomID, buildingID, latitude, longitude, dateTime, timestamp, dataFingerprint, listAPs);
+        //TODO change back to buildingID
+        FinalData data = new FinalData(userId, email, roomID, locationID, locationID, latitude, longitude, dateTime, timestamp, dataFingerprint, listAPs);
         FirestoreManager.updateFirestore(data);
         Toast.makeText(this, "Data Uploaded", Toast.LENGTH_SHORT).show();
     }

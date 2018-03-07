@@ -9,17 +9,18 @@ import java.util.ArrayList;
 public class FinalData {
 
     private ArrayList<FinalFingerprint> data;
-    private String userId, email, roomId, buildingId, dateTime;
+    private String userId, email, roomId, buildingId, locationId, dateTime;
     private double latitude, longitude;
     private long timestamp;
     private ArrayList<String> accessPoints;
 
-    public FinalData(String userId, String email, String roomId, String buildingId, double latitude, double longitude,
+    public FinalData(String userId, String email, String roomId, String buildingId, String locationId, double latitude, double longitude,
                      String dateTime, long timestamp, ArrayList<FinalFingerprint>dataFingerprint, ArrayList<String>listAPs){
         this.userId = userId;
         this.email = email;
         this.roomId = roomId;
         this.buildingId = buildingId;
+        this.locationId = locationId;
         this.latitude = latitude;
         this.longitude = longitude;
         this.dateTime = dateTime;
@@ -106,5 +107,13 @@ public class FinalData {
 
     public void setAccessPoints(ArrayList<String> accessPoints) {
         this.accessPoints = accessPoints;
+    }
+
+    public String getLocationId() {
+        return locationId;
+    }
+
+    public void setLocationId(String locationId) {
+        this.locationId = locationId;
     }
 }
