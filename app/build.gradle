@@ -27,6 +27,7 @@ dependencies {
     implementation "android.arch.lifecycle:common-java8:1.1.0"
 
     implementation 'com.android.support:recyclerview-v7:27.1.0'
+    implementation 'com.android.support:cardview-v7:27.1.0'
 
     implementation 'com.github.pwittchen:reactivewifi-rx2:0.3.0'
 
