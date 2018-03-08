@@ -231,7 +231,7 @@ public class TrainingActivity extends AppCompatActivity{
         String dateTime = dateFormat.format(new Date());
         long timestamp = System.currentTimeMillis();
         //TODO change back to buildingID
-        FinalData data = new FinalData(userId, email, roomID, locationID, locationID, latitude, longitude, dateTime, timestamp, dataFingerprint, listAPs);
+        FinalData data = new FinalData(userId, email, roomID, buildingID, locationID, latitude, longitude, dateTime, timestamp, dataFingerprint, listAPs);
         FirestoreManager.updateFirestore(data);
         Toast.makeText(this, "Data Uploaded", Toast.LENGTH_SHORT).show();
     }
