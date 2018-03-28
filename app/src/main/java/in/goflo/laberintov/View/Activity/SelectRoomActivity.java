@@ -9,6 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import in.goflo.laberintov.Model.RoomDetails;
@@ -50,11 +52,21 @@ public class SelectRoomActivity extends AppCompatActivity {
             @Override
             public void onChanged(@Nullable List<RoomDetails> roomDetails) {
                 if(roomDetails != null) {
+                    Collections.sort(roomDetails, new RoomComparator());
                     adapter = new RoomListAdapter(getApplicationContext(), roomDetails);
                     recyclerView.setAdapter(adapter);
                     recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                 }
             }
         });
+    }
+
+
+    private class RoomComparator implements Comparator<RoomDetails>
+    {
+        public int compare(RoomDetails r1, RoomDetails r2)
+        {
+            return r1.getRoomName().compareTo(r2.getRoomName());
+        }
     }
 }

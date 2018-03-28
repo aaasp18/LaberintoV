@@ -25,7 +25,7 @@ import in.goflo.laberintov.Model.LocationDetails;
 public class LocationViewModel extends ViewModel {
 
     private static final String TAG = "LocationViewModel";
-    private static final String KEY_USER_ID = "userID";
+    private static final String KEY_USER_ID = "userId";
     private static final String KEY_NAME = "name";
     private static final String KEY_LOCATIONS = "locations";
     private static String userID;

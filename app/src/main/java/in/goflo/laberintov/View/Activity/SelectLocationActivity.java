@@ -16,6 +16,8 @@ import android.view.MenuItem;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import in.goflo.laberintov.Helper.AuthManager;
@@ -51,6 +53,7 @@ public class SelectLocationActivity extends AppCompatActivity{
             @Override
             public void onChanged(@Nullable List<LocationDetails> locationDetails) {
                 if(locationDetails != null) {
+                    Collections.sort(locationDetails, new LocationComparator());
                     adapter = new LocationListAdapter(getApplicationContext(), locationDetails);
                     recyclerView.setAdapter(adapter);
                     recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
@@ -89,5 +92,13 @@ public class SelectLocationActivity extends AppCompatActivity{
         AuthManager.deleteData(this);
         startActivity(new Intent(this, LoginActivity.class));
         finish();
+    }
+
+    private class LocationComparator implements Comparator<LocationDetails>
+    {
+        public int compare(LocationDetails l1, LocationDetails l2)
+        {
+            return l1.getLocationName().compareTo(l2.getLocationName());
+        }
     }
 }
