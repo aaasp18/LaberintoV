@@ -27,7 +27,7 @@ public class BuildingViewModel extends ViewModel {
     private static final String TAG = "BuildingViewModel";
     private static final String KEY_NAME = "name";
     private static final String KEY_BUILDINGS = "buildings";
-    private static final String KEY_LOCATION_ID = "locationID";
+    private static final String KEY_LOCATION_ID = "locationId";
     private static String locationID;
 
     private static Query buildingQuery;

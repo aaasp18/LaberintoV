@@ -9,10 +9,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import in.goflo.laberintov.Model.BuildingDetails;
+import in.goflo.laberintov.Model.RoomDetails;
 import in.goflo.laberintov.R;
 import in.goflo.laberintov.View.Adapter.BuildingListAdapter;
 import in.goflo.laberintov.ViewModel.BuildingViewModel;
@@ -51,11 +53,20 @@ public class SelectBuildingActivity extends AppCompatActivity {
             @Override
             public void onChanged(@Nullable List<BuildingDetails> buildingDetails) {
                 if(buildingDetails != null) {
+                    Collections.sort(buildingDetails, new BuildingComparator());
                     adapter = new BuildingListAdapter(getApplicationContext(), buildingDetails);
                     recyclerView.setAdapter(adapter);
                     recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                 }
             }
         });
+    }
+
+    private class BuildingComparator implements Comparator<BuildingDetails>
+    {
+        public int compare(BuildingDetails b1, BuildingDetails b2)
+        {
+            return b1.getBuildingName().compareTo(b2.getBuildingName());
+        }
     }
 }
